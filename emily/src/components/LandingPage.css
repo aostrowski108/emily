@@ -1,0 +1,77 @@
+.landing-page {
+    font-family: "Gudea", Arial, sans-serif;
+    color: #000;
+    background-color: #f9f8f3; /* slight off-white to mimic the sketch background */
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .hero-section {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    font-weight: 50;
+    background-repeat: no-repeat;
+    padding: 2rem;
+  }
+  
+  .hero-content {
+    max-width: 400px;
+    margin-right: 2rem;
+    font-family: "Gudea", Arial, sans-serif;
+  }
+  
+  .title {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin: 0 0 0.5rem;
+  }
+  
+  .subtitle {
+    font-size: 1.2rem;
+    margin: 0 0 1rem;
+  }
+  
+  .cta-buttons {
+    display: flex;
+    gap: 1rem;
+  }
+  
+  .cta-button {
+    cursor: pointer;
+    border: 2px solid #000;
+    background-color: transparent;
+    font-size: 1rem;
+    padding: 0.5rem 1rem;
+    transition: all 0.2s ease;
+  }
+  
+  .cta-button:hover {
+    background-color: #000;
+    color: #fff;
+  }
+  
+  .hero-illustration {
+    margin-top: 1rem;
+    max-width: 300px;
+  }
+  
+  .info-section {
+    padding: 2rem;
+    max-width: 600px;
+    margin: 0 auto;
+    text-align: center;
+  }
+  
+  .info-section h2 {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+  }
+  
+  .info-section p {
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+  

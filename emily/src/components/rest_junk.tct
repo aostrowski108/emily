@@ -1,0 +1,36 @@
+ {/* ---------- ABOUT SECTION ---------- */}
+        <div className="about-section">
+          <h2 className="about-heading">Our Story</h2>
+          <p className="about-text">
+            la la la la la la la 
+          </p>
+        </div>
+        
+  
+        {/* ---------- HIGHLIGHTS / FEATURES SECTION ---------- */}
+        <div className="highlights-section">
+          <div className="highlight-card">
+            <h3 className="card-title">Farm-Fresh Ingredients</h3>
+            <p className="card-text">
+              Every dish begins with locally sourced produce and sustainably raised meats.
+            </p>
+          </div>
+          <div className="highlight-card">
+            <h3 className="card-title">Bold Flavors</h3>
+            <p className="card-text">
+              Our chefs blend modern techniques with global inspirations to bring unforgettable tastes to your plate.
+            </p>
+          </div>
+          <div className="highlight-card">
+            <h3 className="card-title">Elegant Ambiance</h3>
+            <p className="card-text">
+              Enjoy the warmth of burnt red accents and soft lighting for the perfect dining experience.
+            </p>
+          </div>
+        </div>
+  
+        {/* ---------- CALL-TO-ACTION / FOOTER ---------- */}
+        <div className="footer-section">
+          <h2 className="footer-heading">Indulge in Our Seasonal Specials</h2>
+          <button className="footer-button">View Menu</button>
+        </div>
