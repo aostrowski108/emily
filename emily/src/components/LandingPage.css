@@ -60,6 +60,20 @@
       transform: translate(-50%, -130%);
     }
   }
+  @media (min-width: 2048px) {
+    .hero-img {
+      transform: scale(0.55); /* 👈 ZOOM OUT */
+      transform-origin: center top; /* keeps it anchored to the top */
+      max-height: none; /* let it scale naturally */
+    }
+  
+    .hero-content {
+      top: 30%; /* ✅ this puts it higher in the wrapper */
+      transform: translate(-50%, -170%);
+    }
+  }
+
+  
 
   
   
