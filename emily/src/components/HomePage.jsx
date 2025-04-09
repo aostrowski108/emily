@@ -31,7 +31,6 @@ const HomePage = () => {
         <ResponsiveAppBar />
   
         {/* ---------- HERO SECTION ---------- */}
-          <div className="overlay"></div>
           <div className="hero-wrapper">
              <img src={heroImage} className="hero-img" />
           <div className="hero-content">
@@ -69,7 +68,7 @@ function ResponsiveAppBar() {
     };
 
     return (
-        <AppBar position="static" sx={{ backgroundColor: "#7c0a02" }}>
+        <AppBar position="static" sx={{ backgroundColor: "#7c0a02", zIndex: 10 }}>
         <Container maxWidth="xl">
             <Toolbar disableGutters>
             {/* LOGO on the LEFT side */}
