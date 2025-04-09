@@ -6,22 +6,62 @@
     margin: 0;
     padding: 0;
   }
-  
-  .hero-section {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
-    font-weight: 50;
-    background-repeat: no-repeat;
-    padding: 2rem;
+
+  .hero-wrapper {
+    position: relative;
+    text-align: center;
+    align-items: center; /* 👈 horizontally centers children */
+    justify-content: center; /* optional if you want vertical centering too */
+  }
+
+  .hero-img {
+    width: 100%;
+    height: auto;
+    max-height: 100vh;   /* Limit max height */
+    object-fit: cover;
+    display: block;
+    margin: 0 auto; /* just in case */
+    padding: 1rem;
   }
   
   .hero-content {
-    max-width: 400px;
-    margin-right: 2rem;
-    font-family: "Gudea", Arial, sans-serif;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -65%); /* centers it */
+    z-index: 2;
+    color: white;
+    padding: 1rem;
+    width: 100%;
+    max-width: 90%;
   }
+  
+  .hero-section {
+    height: 100vh;
+    background-size: cover;
+    background-position: center; /* 👈 this centers the image */
+    background-repeat: no-repeat;
+    position: relative;
+    display: flex;
+    align-items: center;     /* vertical centering */
+    justify-content: center; /* horizontal centering */
+    text-align: center;
+  }
+
+  @media (min-width: 1024px) {
+    .hero-img {
+      transform: scale(0.65); /* 👈 ZOOM OUT */
+      transform-origin: center top; /* keeps it anchored to the top */
+      max-height: none; /* let it scale naturally */
+    }
+  
+    .hero-content {
+      top: 30%; /* ✅ this puts it higher in the wrapper */
+      transform: translate(-50%, -130%);
+    }
+  }
+
+  
   
   .title {
     font-size: 2.5rem;

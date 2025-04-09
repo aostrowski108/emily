@@ -31,11 +31,9 @@ const HomePage = () => {
         <ResponsiveAppBar />
   
         {/* ---------- HERO SECTION ---------- */}
-        <div
-          className="hero-section"
-          style={{ backgroundImage: `url(${heroImage})` }}
-        >
           <div className="overlay"></div>
+          <div className="hero-wrapper">
+             <img src={heroImage} className="hero-img" />
           <div className="hero-content">
             <h1 className="hero-title">
               Private Chef Experience<br /> Where Everyone<br />Has a Seat At the<br />
@@ -43,8 +41,8 @@ const HomePage = () => {
             </h1>
           </div>
         </div>
+        </div>
   
-      </div>
     );
   };
 
@@ -75,65 +73,76 @@ function ResponsiveAppBar() {
         <Container maxWidth="xl">
             <Toolbar disableGutters>
             {/* LOGO on the LEFT side */}
-            <Box sx={{ display: "flex", alignItems: "center", mr: 2 }}>
+            <Box
+                sx={{
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "space-between",
+                mr: 2,
+                cursor: { xs: "pointer", md: "default" }, // pointer only on mobile
+                }}
+                onClick={(e) => {
+                if (window.innerWidth < 900) {
+                    // Only allow dropdown on mobile (< md breakpoint)
+                    handleOpenNavMenu(e);
+                }
+                }}
+            >
                 <img
                     src={smallLogo}
                     alt="Burnt & Cream Logo"
                     style={{ height: "70px", marginRight: "8px" }}
                 />
                 {/* If you still want text next to the logo: */}
-                <Typography
-                    variant="h6"
-                    noWrap
-                    component="div"
-                    sx={{ fontWeight: 700, letterSpacing: ".1rem" }}
-                >
-                </Typography>
             </Box>
 
             {/* Mobile: menu icon & site title */}
             <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
-                {/* Menu icon (hamburger) on mobile */}
-                <IconButton
-                size="large"
-                aria-label="account of current user"
-                aria-controls="menu-appbar"
-                aria-haspopup="true"
-                onClick={handleOpenNavMenu}
-                color="inherit"
+                {/* Clickable "Table" text to open mobile dropdown */}
+                <Typography
+                    variant="h6"
+                    noWrap
+                    component="div"
+                    onClick={handleOpenNavMenu}
+                    sx={{ cursor: "pointer", pl: 2 }}
                 >
-                <MenuIcon />
-                </IconButton>
+                </Typography>
 
-                {/* Mobile Menu (dropdown) */}
+                {/* Mobile Menu */}
                 <Menu
-                id="menu-appbar"
-                anchorEl={anchorElNav}
-                anchorOrigin={{
+                    id="menu-appbar"
+                    anchorEl={anchorElNav}
+                    anchorOrigin={{
                     vertical: "bottom",
                     horizontal: "left",
-                }}
-                keepMounted
-                transformOrigin={{
+                    }}
+                    keepMounted
+                    transformOrigin={{
                     vertical: "top",
                     horizontal: "left",
-                }}
-                open={Boolean(anchorElNav)}
-                onClose={handleCloseNavMenu}
-                sx={{
+                    }}
+                    open={Boolean(anchorElNav)}
+                    onClose={handleCloseNavMenu}
+                    sx={{
                     display: { xs: "block", md: "none" },
-                }}
+                    "& .MuiPaper-root": {
+                        boxShadow: "none", // optional styling
+                    },
+                    // Remove unwanted dropdown icons globally within this Menu
+                    "& .MuiListItemIcon-root": {
+                        display: "none",
+                    },
+                    }}
                 >
-                {pages.map((page) => (
+                    {pages.map((page) => (
                     <MenuItem key={page} onClick={handleCloseNavMenu}>
-                    <Typography textAlign="center">{page}</Typography>
+                        <Typography textAlign="center">{page}</Typography>
                     </MenuItem>
-                ))}
+                    ))}
                 </Menu>
-            </Box>
+                </Box>
 
             {/* Small screens: show logo text in the center (optional) */}
-            <AdbIcon sx={{ display: { xs: "flex", md: "none" }, mr: 1 }} />
             <Typography
                 variant="h5"
                 noWrap
@@ -145,7 +154,6 @@ function ResponsiveAppBar() {
                 letterSpacing: ".1rem",
                 }}
             >
-                Burnt & Cream
             </Typography>
 
             {/* Desktop: top-level buttons */}
