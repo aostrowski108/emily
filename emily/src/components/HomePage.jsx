@@ -26,19 +26,25 @@ const settings = ["Profile", "Account", "Dashboard", "Logout"];
 const HomePage = () => {
     return (
         <div className="landing-page">
-  
+
         {/* ---------- NAVIGATION / APP BAR ---------- */}
         <ResponsiveAppBar />
+        <div className="above-hero-text">
+        <h1>
+            Take a seat at <span className="cursive-word">your</span>
+        </h1>
+        <h1 className="table-styled">Table</h1>
+        </div>
   
         {/* ---------- HERO SECTION ---------- */}
           <div className="hero-wrapper">
              <img src={heroImage} className="hero-img" />
-          <div className="hero-content">
+          {/* <div className="hero-content">
             <h1 className="hero-title">
               Private Chef Experience<br /> Where Everyone<br />Has a Seat At the<br />
               <span className="table-word">Table</span>
             </h1>
-          </div>
+          </div> */}
         </div>
         </div>
   

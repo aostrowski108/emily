@@ -7,6 +7,41 @@
     padding: 0;
   }
 
+  .above-hero-text {
+    text-align: center;
+    margin-right: 5rem;
+    padding: 2rem 1rem; /* optional spacing */
+    font-size: 1.25rem; /* example font size */
+    color: #000;        /* adjust color if you like */
+    line-height: 0.8;
+  }
+
+  .cursive-word {
+    font-family: "some-cursive-font", cursive; /* or any cursive font you prefer */
+    font-style: italic; /* optional if you want more of a handwritten look */
+    font-size: 2rem;    /* increase size */
+  }
+  
+  .big-bold-text {
+    font-weight: 700; /* or 'bold' */
+    font-size: 3rem;  /* or larger as needed */
+  }
+
+  .table-styled {
+  margin-top: 0.25rem;
+  font-weight: 900;
+  font-size: 4rem; /* Increase to 4rem (or whatever you prefer) */
+  font-style: italic;
+  color: #7c0a02;
+  text-shadow:
+    -1px -1px 0 #000,
+     1px -1px 0 #000,
+    -1px  1px 0 #000,
+     1px  1px 0 #000;
+  /* Optional extra changes below */
+}
+  
+
   .hero-wrapper {
     position: relative;
     text-align: center;
