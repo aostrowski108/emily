@@ -2,7 +2,7 @@ import React from 'react';
 import styles from './homePageStyles';
 import './HomePage.css';
 
-import heroImage from "./tb2.png"; // Replace with your own image
+import heroImage from "./nicetable.png"; // Replace with your own image
 import smallLogo from './small_logo2.png'
 
 // MUI compononets
@@ -25,7 +25,7 @@ const settings = ["Profile", "Account", "Dashboard", "Logout"];
 
 const HomePage = () => {
     return (
-      <div className="home-container">
+        <div className="landing-page">
   
         {/* ---------- NAVIGATION / APP BAR ---------- */}
         <ResponsiveAppBar />
