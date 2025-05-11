@@ -1,0 +1,29 @@
+/* src/Header.css */
+
+:root {
+    --header-height: 80px;
+  }
+  
+  .site-header {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%;
+    height: var(--header-height);
+    background-color: #828217;
+    border-bottom: 1px solid #ddd;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.25rem;
+    z-index: 10;
+  }
+  
+  .site-logo {
+    position: absolute;
+    left: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    height: calc(var(--header-height) * 0.8);
+    object-fit: contain;
+  }
+  

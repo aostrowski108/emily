@@ -1,0 +1,65 @@
+/* Base styles for all background images */
+.background-image {
+  position: absolute;
+   /* Behind other content */
+  width: auto; /* Maintain natural width */
+  height: auto; /* Maintain natural height */
+  filter: brightness(0.9);
+  border: 5px solid white; /* Optional: remove if unwanted */
+}
+
+/* Individual image positioning (no rotation) */
+.image1 {
+  z-index: 1;
+  top: -104%; /* Near top-left corner */
+  left: 18%;
+  filter: saturate(1.55) brightness(0.7);
+  transform: rotate(0deg) scale(1.5);
+}
+
+.image2 {
+  z-index: 2;
+  top: -80%; /* Near top-right corner */
+  right: -25%;
+  transform: scale(0.20);
+  clip-path: inset(80px 20px)
+}
+
+.image3 {
+  z-index: 4;
+  bottom: -35%; /* Near bottom-left corner */
+  left: -23%;
+  transform: scale(0.25);
+  clip-path: inset(20% 2% 20% 2%);
+}
+
+.image4 {
+  z-index: 3;
+  bottom: -78%; /* Near bottom-right corner */
+  right: -27%;
+  transform: scale(0.25);
+  clip-path: inset(20% 2% 2% 2%);
+}
+
+.image5 {
+  z-index: 5;
+  top: -54%; /* Near top-left corner */
+  left: 18%;
+  transform: scale(0.52);
+  clip-path: inset(10% 2% 2% 2%);
+}
+
+.image6 {
+  z-index: 3;
+  top: -30%; /* Near top-left corner */
+  left: -20%;
+  transform: rotate(90deg) scale(0.25);
+  clip-path: inset(10px 20px);
+}
+
+/* Optional: Responsive adjustments for smaller screens */
+@media (max-width: 768px) {
+  .background-image {
+    width: 80%; /* Adjust if needed, but keeps natural size by default */
+  }
+}
