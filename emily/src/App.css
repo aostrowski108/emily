@@ -148,3 +148,84 @@ body, html, #root {
 .app-footer a:hover {
   text-decoration: underline;
 }
+
+
+/* ── SHOW/HIDE MOBILE VS DESKTOP LINKS ───────────────────────────────── */
+@media (max-width: 768px) {
+  /* on small screens, hide your desktop-only nav links */
+  .desktop-only { 
+    display: none; 
+  }
+}
+
+@media (min-width: 769px) {
+  /* on larger screens, hide the hamburger button and mobile menu */
+  .mobile-only { 
+    display: none; 
+  }
+}
+
+/* ── DROPDOWN MENU ─────────────────────────────────────────────────────── */
+.dropdown-menu {
+  position: absolute;            /* position it relative to the page */
+  top: var(--header-height);     /* sit just below your fixed navbar */
+  right: 2rem;                   /* align under the hamburger button */
+  background: var(--brand-green);
+  display: flex;
+  flex-direction: column;
+  gap: .75rem;
+  padding: 1rem;
+  border-radius: 4px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  z-index: 999;
+}
+
+.dropdown-menu a {
+  color: white;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+/* ── ABOUT PAGE STYLES ───────────────────────────────────────────────── */ 
+
+.page-intro {
+  margin-top: var(--header-height);
+  padding: 2rem;
+  text-align: center;
+  font-size: 1.5rem;
+  font-style: italic;
+  color: #222;
+}
+
+/* two-column container */
+.about-content {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  align-items: flex-start;
+  padding: 0 2rem 4rem;
+}
+
+/* left: image */
+.about-image img {
+  width: 100%;
+  max-width: 400px;
+  border-radius: 4px;
+  display: block;
+}
+.about-image figcaption {
+  text-align: center;
+  margin-top: .5rem;
+  color: #555;
+  font-size: .9rem;
+}
+
+/* right: text column */
+.about-text {
+  flex: 1;
+  min-width: 280px;
+  line-height: 1.5;
+}
+.about-text p + p {
+  margin-top: 1.5rem;
+}

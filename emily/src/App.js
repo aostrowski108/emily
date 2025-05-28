@@ -16,51 +16,26 @@ import fish from './components/fish.jpg';
 import pot from './components/pot.jpg';
 import pot2 from './components/pot2.jpg';
 import toast from './components/toast.jpg';
+import NavBar from './components/NavBar';
+import { Routes, Route } from 'react-router-dom';
+import About from './components/About.js';
+import Home from './components/Home.js';
+
 
 function App() {
-  const images = [ salad2, salmon, cake,
-                  pot, photo5, toast,
-                  photo3, photo7, pot2
-                ];
 
   return (
     <div className="app">
-      <header className="navbar">
-        <div className="nav-left">
-          <a href="/" className="nav-logo">
-            <img src={logo} alt="Table by Emily" />
-          </a>
-          <nav className="nav-links">
-            <a href="/">Home</a>
-            {/* <a href="/about">About</a>
-            <a href="/quote">Get a Quote</a> */}
-          </nav>
-        </div>
-        <button className="hamburger" aria-label="Menu">
-          <span />
-          <span />
-          <span />
-        </button>
-      </header>
+      
 
-      <main className="hero">
-        <div className="hero-text">
-          <img src={logo} alt="Table by Emily" className="hero-logo" />
-          <h1>
-            Private Chef Services<br/>
-            where everyone has a seat at the … <em>TABLE</em>
-          </h1>
-        </div>
+      <NavBar />
 
-        <div className="gallery-grid">
-          {images.map((src, i) => (
-            <div className="gallery-item" key={i}>
-              <img src={src} alt={`Dish ${i + 1}`} />
-            </div>
-          ))}
-        </div>
-        
-      </main>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/about" element={<About />} />
+        {/* <Route path="/quote" element={<Quote />} /> */}
+      </Routes>
+
       <footer className="app-footer">
        <p>
          For inquiries, please email:&nbsp;
