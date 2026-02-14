@@ -1,39 +1,61 @@
-// src/components/About.js
-import '../App.css';           // reuse your existing styles
-import emilyImg from './emilyemily.jpeg'; // replace with your chef photo filename
+import emilyPortrait from './emilyemily.jpeg';
+import beautyPlate from './beaut.JPG';
+import tableScene from './webtable_01.png';
+import artisticPlate from './drawbutnot.JPG';
 
 export default function About() {
   return (
-    <main className="about-main">
-      {/* intro line */}
-      <h2 className="page-intro">
-        <em>TABLE</em> by Emily is a private chef service tailored to any event you can dream up.
-      </h2>
+    <div className="about-page">
+      <section className="section-shell about-hero reveal">
+        <div className="about-portrait-wrap">
+          <img src={emilyPortrait} alt="Chef Emily portrait" className="about-portrait" />
+        </div>
 
-      {/* two-column layout */}
-      <div className="about-content">
-        {/* left: photo + caption */}
-        <figure className="about-image">
-          <img src={emilyImg} alt="Chef and founder Emily Breitenecker" />
-          <figcaption>Chef and founder Emily Breitenecker</figcaption>
-        </figure>
-
-        {/* right: mission text */}
-        <div className="about-text">
+        <div className="about-copy">
+          <p className="kicker">About Emily</p>
+          <h1>Chef-driven dining crafted for meaningful gatherings.</h1>
           <p>
-            <strong>Our mission</strong> is to provide an inclusive private chef experience,
-            enabling opportunities for communities to gather around the <em>TABLE</em>.
-            <strong> Enjoy stress-free hosting</strong>, so all you have to focus on
-            is enjoying time with your guests.
-            <strong> Together, we’ll collaborate</strong> to bring your dinner
-            party vision to life, curating a menu that reflects your tastes,
-            your guests’ preferences, and the vibe you want to create.
+            Emily brings a private-chef mindset that blends thoughtful sourcing, refined technique,
+            and a welcoming table atmosphere. The goal is simple: make every guest feel taken care of.
           </p>
           <p>
-            <strong>Pull up a seat at your <em>TABLE</em>.</strong>
+            From intimate dinners to larger celebrations, each menu is tuned to your people,
+            your space, and the moment you want to create.
           </p>
         </div>
-      </div>
-    </main>
+      </section>
+
+      <section className="section-shell about-gallery reveal">
+        <article className="about-panel reveal">
+          <img src={beautyPlate} alt="Detailed plated dish" loading="lazy" />
+          <div>
+            <h3>Ingredient-Forward Menus</h3>
+            <p>
+              Seasonal choices and balanced courses keep the meal fresh, expressive, and grounded.
+            </p>
+          </div>
+        </article>
+
+        <article className="about-panel reveal">
+          <img src={tableScene} alt="Styled event table" loading="lazy" />
+          <div>
+            <h3>Designed for Hosting</h3>
+            <p>
+              A clean event flow lets you stay present with guests while the kitchen and service run smoothly.
+            </p>
+          </div>
+        </article>
+
+        <article className="about-panel reveal">
+          <img src={artisticPlate} alt="Artfully plated course" loading="lazy" />
+          <div>
+            <h3>High Touch, Not Stuffy</h3>
+            <p>
+              Professional standards with a relaxed, approachable warmth throughout the evening.
+            </p>
+          </div>
+        </article>
+      </section>
+    </div>
   );
 }

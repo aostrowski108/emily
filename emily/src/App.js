@@ -1,133 +1,131 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { Route, Routes, useLocation } from 'react-router-dom';
 import './App.css';
-import logo from './components/small_logo2.png';
-import img1 from './components/tomato.JPG';
-import photo1 from './components/tomato.JPG';
-// import photo2 from './drawbutnot.JPG';
-// import photo6 from './foods.JPG';
-import photo4 from './components/salad.JPG';
-import photo5 from './components/beaut.JPG';
-import photo3 from './components/bread.JPG';
-import photo7 from './components/corn.JPG';
-import cake from './components/cake.jpg';
-import salmon from './components/salmon.jpg';
-import salad2 from './components/salad2.jpg';
-import fish from './components/fish.jpg';
-import pot from './components/pot.jpg';
-import pot2 from './components/pot2.jpg';
-import toast from './components/toast.jpg';
 import NavBar from './components/NavBar';
-import { Routes, Route } from 'react-router-dom';
-import About from './components/About.js';
-import Home from './components/Home.js';
-
+import Home from './components/Home';
+import About from './components/About';
+import QuestionnairePage from './components/QuestionnairePage';
+import ProduceDoodles from './components/ProduceDoodles';
 
 function App() {
+  const [isLoading, setIsLoading] = useState(true);
+  const [isTransitioning, setIsTransitioning] = useState(false);
+  const location = useLocation();
+
+  useEffect(() => {
+    const timer = setTimeout(() => setIsLoading(false), 1350);
+    return () => clearTimeout(timer);
+  }, []);
+
+  useEffect(() => {
+    document.body.style.overflow = isLoading ? 'hidden' : '';
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [isLoading]);
+
+  useEffect(() => {
+    setIsTransitioning(true);
+    const timer = setTimeout(() => setIsTransitioning(false), 420);
+    return () => clearTimeout(timer);
+  }, [location.pathname]);
+
+  useEffect(() => {
+    if (isLoading) {
+      return undefined;
+    }
+
+    const revealNodes = Array.from(document.querySelectorAll('.reveal'));
+
+    if (!revealNodes.length) {
+      return undefined;
+    }
+
+    if (typeof IntersectionObserver === 'undefined') {
+      revealNodes.forEach((node) => node.classList.add('is-visible'));
+      return undefined;
+    }
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      {
+        threshold: 0.18,
+        rootMargin: '0px 0px -8% 0px',
+      }
+    );
+
+    revealNodes.forEach((node, index) => {
+      node.style.setProperty('--reveal-delay', `${Math.min(index * 55, 360)}ms`);
+      observer.observe(node);
+    });
+
+    return () => observer.disconnect();
+  }, [location.pathname, isLoading]);
+
+  useEffect(() => {
+    const updateScrollVars = () => {
+      const maxScroll = Math.max(1, document.documentElement.scrollHeight - window.innerHeight);
+      const ratio = Math.min(1, Math.max(0, window.scrollY / maxScroll));
+      document.documentElement.style.setProperty('--scroll-progress', ratio.toFixed(4));
+      document.documentElement.style.setProperty('--scroll-shift', `${Math.round(window.scrollY)}px`);
+    };
+
+    updateScrollVars();
+
+    window.addEventListener('scroll', updateScrollVars, { passive: true });
+    window.addEventListener('resize', updateScrollVars);
+
+    return () => {
+      window.removeEventListener('scroll', updateScrollVars);
+      window.removeEventListener('resize', updateScrollVars);
+    };
+  }, []);
 
   return (
-    <div className="app">
-      
+    <div className="site-shell">
+      <div className={`startup-loader ${isLoading ? 'is-visible' : ''}`} aria-hidden={!isLoading}>
+        <div className="loader-core">
+          <h1>TABLE</h1>
+          <p className="loader-kicker">by chef emily</p>
+          <span className="loader-line" />
+        </div>
+      </div>
 
-      <NavBar />
+      <div className="page-frame">
+        <div className="ambient-lights" aria-hidden="true">
+          <span />
+          <span />
+          <span />
+        </div>
+        <ProduceDoodles />
 
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/about" element={<About />} />
-        {/* <Route path="/quote" element={<Quote />} /> */}
-      </Routes>
+        <NavBar />
+        <div className="scroll-indicator" aria-hidden="true">
+          <span />
+        </div>
 
-      <footer className="app-footer">
-       <p>
-         For inquiries, please email:&nbsp;
-         <a href="mailto:emily@tablebyemily.com">
-         emily@tablebyemily.com
-         </a>
-       </p>
-     </footer>
+        <main className={`route-shell ${isTransitioning ? 'is-transitioning' : ''}`} key={location.pathname}>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/howitworks" element={<QuestionnairePage />} />
+          </Routes>
+        </main>
+
+        <footer className="app-footer">
+          <p>Chef Emily Private Dining</p>
+          <a href="mailto:emily@tablebyemily.com">emily@tablebyemily.com</a>
+        </footer>
+      </div>
     </div>
   );
 }
 
 export default App;
- 
-
-// App.js
-// import React from 'react';
-// import InstagramGrid from './components/InstagramGrid';
-
-// import photo1 from './components/tomato.JPG';
-// // import photo2 from './drawbutnot.JPG';
-// // import photo6 from './foods.JPG';
-// import photo4 from './components/salad.JPG';
-// import photo5 from './components/beaut.JPG';
-// import photo3 from './components/bread.JPG';
-// import photo7 from './components/corn.JPG';
-// import cake from './components/cake.jpg';
-// import salmon from './components/salmon.jpg';
-// import salad2 from './components/salad2.jpg';
-// import fish from './components/fish.jpg';
-// import pot from './components/pot.jpg';
-// import pot2 from './components/pot2.jpg';
-// import toast from './components/toast.jpg';
-
-// function App() {
-//   const images = [ salad2, salmon, cake,
-//                    pot, photo5, toast,
-//                    photo3, photo7, pot2
-//                  ];
-
-//   return (
-//     <div style={{ maxWidth: 600, margin: '0 auto' }}>
-//       <InstagramGrid images={images} />
-//     </div>
-//   );
-// }
-
-// export default App;
-
-
-
-
-
-// // import logo from './logo.svg';
-// // import './App.css';
-// // import Menu from './components/Menu.js';
-// // import Landing from './components/Landing.jsx';
-// // import Home from './components/HomePage.jsx'
-// // import Home2 from './components/HomePage2.jsx'
-
-// // function App() {
-// //   return (
-// //     <div>
-// //       <Home2 />
-// //     </div>
-// //   );
-// // }
-
-// // export default App;
-
-
-// // function App() {
-// //   return (
-// //     <div className="App">
-// //       <header className="App-header">
-// //         <img src={logo} className="App-logo" alt="logo" />
-// //         <p>
-// //           Edit <code>src/App.js</code> and save to reload.
-// //         </p>
-// //         <a
-// //           className="App-link"
-// //           href="https://reactjs.org"
-// //           target="_blank"
-// //           rel="noopener noreferrer"
-// //         >
-// //           Learn React
-// //         </a>
-// //       </header>
-// //       {/* Insert the Menu component here */}
-// //       <Menu />
-// //     </div>
-// //   );
-// // }
-
-// // export default App;
